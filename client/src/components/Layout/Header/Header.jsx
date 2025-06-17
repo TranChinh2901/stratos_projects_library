@@ -176,7 +176,7 @@ const Header = () => {
                                         <li>
                                             <button onClick={handleLogout} className={styles.logoutButton}>
                                                 <MdLogout size={16} />
-                                                Đăng xuất
+                                               Log out
                                             </button>
                                         </li>
                                     </ul>
@@ -298,7 +298,7 @@ const Header = () => {
                                     <li className={styles.liMobile} style={{textAlign: 'center'}}>
                                         <button onClick={handleLogout} className={`${styles.btn} ${styles.btnDiscord}`} style={{width: '100%', textAlign:'center'}}>
                                             <MdLogout style={{fontSize: '16px', color:'white', textAlign:'center'}}/>
-                                            <span style={{fontSize: '17px', color:'white',textAlign:'center'}}>Đăng xuất</span>
+                                            <span style={{fontSize: '17px', color:'white',textAlign:'center'}}>Logout </span>
                                         </button>
                                     </li>
                                 </>

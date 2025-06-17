@@ -63,18 +63,26 @@ const CategoryLanguages = () => {
 
   }
   
+  const handleClick = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }
   return (  
    <Layout>
      <div className={styles.containerCategory}>
         <div className={styles.flexCategoryOne} >
  <div className={styles.headerSectionCategory} >
-        <h2>Danh mục cho {brandName || slug}</h2> 
-        <p>Hãy cùng nhau khám phá các danh mục khác nhau của {brandName || slug}</p>
+        <h2>Category for {brandName || slug}</h2> 
+        <p>Explore the different topics under {brandName || slug}</p>
       </div>
-      <div className={styles.categoriesGrid}>
+      <div className={styles.categoriesGrid} onClick={handleClick}>
        {
         categories.map((category) => (
-            <Link key={category._id} className={styles.categoryCard} onClick={handleClickToLanguages} style={{ textDecoration: 'none' }} to={`/languages/by-category/${category.slug}`}>
+            <Link key={category._id} className={styles.categoryCard} onClick={handleClickToLanguages} style={{ textDecoration: 'none' }} 
+            to={`/languages/by-category/${category.slug}`}
+            >
               <div className={styles.categoryImageWrapper}>
                 <img 
                   src={category.imageC} 
@@ -96,7 +104,7 @@ const CategoryLanguages = () => {
       </div>
         </div>
         <div className={styles.flexCategoryTwo}>
-            <h2>Tìm hiểu blog</h2>
+            <h2>Explore blogs</h2>
             <BlogLanguages/>
         </div>
     </div>

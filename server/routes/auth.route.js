@@ -8,5 +8,6 @@ const router = express.Router();
     router.get('/users/:id', getUserByIdController);
     router.get('/count-users', countUsersController);
     router.delete('/users/:id', requireSignIn, isAdmin, deleteUserController);
-    router.put('/users/:id', requireSignIn, isAdmin, updateUserController);
+    router.put('/users/:id', updateUserController);
+    // router.put('/users/:id', requireSignIn, isAdmin, updateUserController);
 module.exports = router;

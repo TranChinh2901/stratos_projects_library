@@ -1,37 +1,44 @@
-
-
-import { Card, Typography, Descriptions } from 'antd';
+import { LuPenLine } from "react-icons/lu";
+import { Link, useNavigate } from 'react-router-dom';
 import Layout from '../../components/Layout/Layout';
 import { useAuth } from '../../context/AuthContext';
-
-const { Title } = Typography;
-
+import styles from './Profile.module.css'; 
 const Profile = () => {
     const [auth] = useAuth();
-    const user = auth?.user;
-
-    return (
-        <Layout title="Stratos - User Profile" description="View and manage your user profile information.">
-            <div style={{ maxWidth: '800px', margin: '20px auto', padding: '20px' }}>
-                <Card>
-                    <Title level={2} style={{ textAlign: 'center', marginBottom: '24px' }}>
-                        User Profile
-                    </Title>
-
-                    {user && (
-                        <Descriptions bordered column={1}>
-                            <Descriptions.Item label="Name">{user.name}</Descriptions.Item>
-                            <Descriptions.Item label="Email">{user.email}</Descriptions.Item>
-                            <Descriptions.Item label="Phone">{user.phone}</Descriptions.Item>
-                            <Descriptions.Item label="Address">{user.address}</Descriptions.Item>
-                            <Descriptions.Item label="Gender">{user.gender}</Descriptions.Item>
-                            <Descriptions.Item label="Role">{user.role === 1 ? 'Admin' : 'User'}</Descriptions.Item>
-                        </Descriptions>
-                    )}
-                </Card>
+const navigate = useNavigate();
+  return (
+    <Layout title="Stratos - User Profile" description="View and manage your user profile information.">
+      <div className={styles.profileContainer}>
+        <div className={styles.leftProfile}>
+            <div className={styles.profileCard}>
+                <img
+                src={`https://ui-avatars.com/api/?name=${encodeURIComponent(auth?.user?.name)}&background=random&color=fff&size=200`}
+                alt={auth?.user?.name}
+                className={styles.profileImage}
+                />
+                <h2 className={styles.profileName}>{auth?.user?.name}</h2>
+                <p className={styles.profileEmail}>{auth?.user?.github.substring(0,32)}...</p>
+                <p className={styles.profileRole}>
+                Role: {auth?.user?.role === 1 ? 'Admin' : 'Member'}
+                </p>
             </div>
-        </Layout>
-    );
-};
+            </div>
+        <div className={styles.rightProfile}>
+            <div className={styles.profileDetails}>
+                <div className={styles.profileFlex}>
+                    <h3>Profile Details</h3>
+                     <div style={{ fontSize: '22px', cursor: 'pointer' }} onClick={() => navigate("/profile/edit")}>
+                                <LuPenLine />
+                            </div>
+                </div>
+                <p><strong>Email:</strong> {auth?.user?.email}</p>
+                <p><strong>Phone:</strong> {auth?.user?.phone || 'N/A'}</p>
+                <p><strong>Address:</strong> {auth?.user?.address || 'N/A'}</p>
+        </div>
+      </div>
+       </div>
+    </Layout>
+  )
+}
 
-export default Profile;
+export default Profile

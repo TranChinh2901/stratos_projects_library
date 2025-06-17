@@ -33,6 +33,7 @@ import CreateCategory from "./pages/Admin/AdminPages/CategoryLanguages/CreateCat
 import UpdateCategory from "./pages/Admin/AdminPages/CategoryLanguages/UpdateCategory/UpdateCategory";
 import CreateLanguages from "./pages/Admin/AdminPages/Languages/CreateLanguages/CreateLanguages";
 import UpdateLanguages from "./pages/Admin/AdminPages/Languages/UpdateLanguages/UpdateLanguages";
+import EditProfile from "./pages/Profile/EditProfile";
 
 
 const App = () => {
@@ -45,6 +46,7 @@ const App = () => {
         <Route path="/languages/by-category/:slug" element={<Languages />} />
         <Route path="/language_detail/:slug" element={<DetailLanguages />} />
         <Route path="/view-members" element={<ViewTeam />} />
+        <Route path="/profile/edit" element={<EditProfile/>}/>
         <Route
           path="/login"
           element={

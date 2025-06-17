@@ -1,23 +1,20 @@
-/* DetailLanguages.module.css - Rất Đơn Giản */
-
 .detailContainer {
-    max-width: 1200px; /* Giới hạn chiều rộng để nội dung dễ đọc */
-    margin: 40px auto; /* Căn giữa và khoảng cách trên dưới */
-   /* Khoảng cách hai bên */
-    box-sizing: border-box; /* Đảm bảo padding không làm tràn width */
+    max-width: 1200px;
+    margin: 40px auto;
+    box-sizing: border-box;
 }
 
 .inDetailController {
     display: flex;
-    gap: 30px; /* Khoảng cách giữa hai cột */
-    align-items: flex-start; /* Căn đầu các cột */
+    gap: 30px;
+    align-items: flex-start;
 }
 
 .inDetailLeft {
-    flex: 0 0 200px; /* Chiều rộng cố định cho cột trái */
+    flex: 0 0 200px;
     position: sticky;
-    top: 30px; /* Giữ cố định khi cuộn */
-    padding-right: 20px; /* Khoảng cách với cột phải */
+    top: 90px;
+    padding-right: 20px;
 }
 
 .inDetailLeft button {
@@ -26,10 +23,10 @@
     text-align: center;
     gap: 8px;
     padding: 10px 15px;
-    border: 1px solid #ccc; /* Viền xám đơn giản */
-    background-color: transparent; /* Nền trong suốt */
+    border: 1px solid #ccc;
+    background-color: transparent;
     cursor: pointer;
-    border-radius: 0; /* Không bo tròn */
+    border-radius: 0;
     font-size: 15px;
     color: #333;
     width: 100%;
@@ -37,7 +34,7 @@
 }
 
 .inDetailLeft button:hover {
-    background-color: #f0f0f0; /* Nền xám nhạt khi hover */
+    background-color: #f0f0f0;
 }
 
 .inDetailLeft .title {
@@ -45,26 +42,26 @@
     font-size: 1.1rem;
     color: #333;
     padding-bottom: 15px;
-    border-bottom: 1px solid #eee; /* Đường kẻ dưới đơn giản */
+    border-bottom: 1px solid #eee;
 }
 
 .inDetailRight {
-    flex: 1; /* Chiếm hết phần còn lại */
+    flex: 1;
     width: 100%;
-    max-width: 1200px; /* Đảm bảo co giãn được */
+    max-width: 1200px;
     overflow: hidden;
-object-fit: cover;
+    object-fit: cover;
 }
 
 .inDetailRight .title {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     margin-bottom: 10px;
     color: #222;
     text-align: left;
 }
 
 .inDetailRight h3 {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     color: #444;
     margin-bottom: 25px;
     text-align: left;
@@ -74,7 +71,7 @@ object-fit: cover;
     width: 100%;
     height: auto;
     max-height: 450px;
-    border-radius: 0; /* Không bo tròn */
+    border-radius: 0;
     margin-bottom: 30px;
     object-fit: cover;
 }
@@ -84,74 +81,107 @@ object-fit: cover;
     line-height: 1.7;
     color: #333;
     padding-top: 20px;
-    border-top: 1px solid #eee; /* Đường kẻ trên đơn giản */
+    border-top: 1px solid #eee;
 }
 
-/* Kiểu cho nội dung bên trong TinyMCE - Rất cơ bản */
-.descriptionContent p { margin-bottom: 1em; }
-.descriptionContent ul, .descriptionContent ol { margin-left: 20px; margin-bottom: 1em; }
-.descriptionContent li { margin-bottom: 0.5em; }
-.descriptionContent strong, .descriptionContent b { font-weight: bold; color: inherit; } /* Kế thừa màu chữ */
-.descriptionContent em, .descriptionContent i { font-style: italic; }
-.descriptionContent a { color: #0000ee; text-decoration: underline; } /* Màu link mặc định */
+.descriptionContent p {
+    margin-bottom: 1em;
+}
 
-.createdInfo, .editLink {
+.descriptionContent ul,
+.descriptionContent ol {
+    margin-left: 20px;
+    margin-bottom: 1em;
+}
+
+.descriptionContent li {
+    margin-bottom: 0.5em;
+}
+
+.descriptionContent strong,
+.descriptionContent b {
+    font-weight: bold;
+    color: inherit;
+}
+
+.descriptionContent em,
+.descriptionContent i {
+    font-style: italic;
+}
+
+.descriptionContent a {
+    color: #0000ee;
+    text-decoration: underline;
+}
+
+.createdInfo,
+.editLink {
     font-size: 0.9em;
     color: #555;
     margin-top: 15px;
     text-align: right;
 }
+
 .editLink a {
     color: #0000ee;
     text-decoration: none;
 }
+
 .editLink a:hover {
     text-decoration: underline;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
     .detailContainer {
         margin: 20px auto;
         padding: 0 15px;
     }
+
     .inDetailController {
-        flex-direction: column; /* Xếp chồng cột */
+        flex-direction: column;
         gap: 20px;
     }
-    .inDetailLeft {
-        position: static; /* Bỏ sticky */
-        flex: auto;
-        padding-right: 0;
-        padding-bottom: 20px;
-        border-bottom: 1px solid #eee; /* Đường kẻ dưới để phân tách */
-    }
+
+  .inDetailLeft {
+    flex: 0 0 100%;
+    width: 100%;
+    position: static;
+    padding: 0;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 16px;
+  }
+
     .inDetailLeft button {
-        justify-content: center; /* Căn giữa nút */
-        
+        justify-content: center;
     }
-    .inDetailLeft .title,
-    .inDetailRight .title,
-    .inDetailRight h3 {
-        text-align: center; /* Căn giữa tiêu đề trên mobile */
+
+    .inDetailLeft .title{
+        text-align: center;
     }
+
     .inDetailRight {
         padding-top: 10px;
     }
+
     .imageDetailLanguages {
         max-height: 300px;
     }
 }
+
 @media (max-width: 480px) {
     .detailContainer {
         padding: 0 10px;
     }
+
     .inDetailRight .title {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
+        font-weight: bold;
     }
+
     .inDetailRight h3 {
         font-size: 1.2rem;
     }
+
     .descriptionContent {
         font-size: 0.95rem;
     }

@@ -30,14 +30,20 @@ const Languages = () => {
     }
   }, [slug]);
 
+  const handleClick = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }
   return (
     <Layout title={`Bài học`}>
       <div className={styles.containerLanguages}>
         <h1 className={styles.titleLanguages}>
-          Các bài học trong danh mục:
+          Lessons in this category:
         </h1>
         <p className={styles.resultCountLanguages}>
-          Tìm thấy {languages.length} bài học về ngôn ngữ lập trình mà bạn có thể học.
+          Found {languages.length} programming language lessons you can learn.
         </p>
         <div className={styles.languagesGrid}>
           {languages.map((lang, index) => (
@@ -52,8 +58,8 @@ const Languages = () => {
                   dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(lang.description.substring(0, 180)) + '...' }}
                 />
 
-                <Link to={`/language_detail/${lang.slug}`} className={styles.detailButton}>
-                  Xem chi tiết taị đây<MdOutlineNavigateNext />
+                <Link to={`/language_detail/${lang.slug}`} className={styles.detailButton} onClick={handleClick}>
+                 View details here<MdOutlineNavigateNext />
                 </Link>
               </div>
             </div>

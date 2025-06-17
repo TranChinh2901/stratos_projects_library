@@ -31,6 +31,12 @@ const OurTeam = () => {
             return 'Admin';
         }
     }
+    const handldeScroolToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
     return (
         <div className={styles.ourTeamContainer}>
           <div data-aos="fade-right">
@@ -66,7 +72,7 @@ const OurTeam = () => {
                 </div>
             ))}
         </div>
-            <Link to="/view-members" className={styles.nextToView}>View All Team Members<GrLinkNext/> </Link>
+            <Link to="/view-members" className={styles.nextToView} onClick={handldeScroolToTop}>View All Team Members<GrLinkNext/> </Link>
         </div>  
     );
 }

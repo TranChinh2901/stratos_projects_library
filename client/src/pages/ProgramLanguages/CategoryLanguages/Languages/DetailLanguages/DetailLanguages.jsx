@@ -49,15 +49,13 @@ const DetailLanguages = () => {
       </Layout>
     );
   }
-
-
   return (
     <Layout title={language.name}>
       <div className={styles.detailContainer}>
         <div className={styles.inDetailController}>
           <div className={styles.inDetailLeft}>
-            <button onClick={handleback}><IoMdArrowBack /> quay lại</button>
-            <h3 className={styles.title}>--Chi tiết về {language.name}--</h3>
+            <button onClick={handleback}><IoMdArrowBack /> come back</button>
+            <h3 className={styles.title}>-- Details about {language.name} --</h3>
           </div>
           <div className={styles.inDetailRight}>
             <h2 className={styles.title}>{language.name}</h2>
@@ -72,5 +70,4 @@ const DetailLanguages = () => {
     </Layout>
   );
 };
-
 export default DetailLanguages;

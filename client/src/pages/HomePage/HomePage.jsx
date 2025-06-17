@@ -33,6 +33,12 @@ const HomePage = () => {
     };
   }, []);
 
+  const handleClick = () => {
+    window.scrollTo({
+      top: document.getElementById('languages-section').offsetTop,
+      behavior: 'smooth',
+    });
+  }
   return (
     <Layout title={"Stratos - Home"} description="Learn Algorithms and Data Structures with Stratos, an open-source resource for mastering algorithms and their implementation in any programming language.">
       <div className={styles.containerHome}>
@@ -44,7 +50,7 @@ const HomePage = () => {
           <p>Open source resource for learning algorithms and their implementation in any programming language</p>
 
           <div className={styles.buttonContainerHome}>
-            <Link to="/languages" className={styles.buttonHomeA}>
+            <Link to="/" className={styles.buttonHomeA} onClick={handleClick}>
               Explore Languages
             </Link>
             <a
