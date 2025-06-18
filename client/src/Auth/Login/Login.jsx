@@ -22,27 +22,32 @@ const Login = () => {
     const navigate = useNavigate();
     const [form] = Form.useForm();
 
+    // Nếu đã đăng nhập rồi => redirect
     useEffect(() => {
-        form.getFieldInstance('email')?.focus();
-    }, []);
+        if (auth?.user) {
+            navigate('/');
+        } else {
+            form.getFieldInstance('email')?.focus();
+        }
+    }, [auth, navigate, form]);
 
     const handleSubmit = async (values) => {
         setLoading(true);
         try {
-            const response = await axios.post(`${API_URL}/api/v1/auth/login`, values);
-            const { success, token, user_success } = response.data;
+            const res = await axios.post(`${API_URL}/api/v1/auth/login`, values);
+            const { success, token, user_success } = res.data;
 
             if (success && user_success) {
                 setAuth({ user: user_success, token });
-                toast.success('Đăng nhập thành công!');
+                localStorage.setItem('auth', JSON.stringify({ user: user_success, token }));
 
-                // Chuyển hướng dựa vào role
-                navigate(user_success.role === 1 ? '/' : '/');
+                toast.success('Đăng nhập thành công!');
+                navigate(user_success.role === 1 ? '/' : '/'); // Bạn có thể redirect theo quyền ở đây
             } else {
-                toast.error('Đăng nhập thất bại!');
+                toast.error('Email hoặc mật khẩu không đúng!');
             }
-        } catch (error) {
-            toast.error(error?.response?.data?.message || 'Đăng nhập thất bại');
+        } catch (err) {
+            toast.error(err?.response?.data?.message || 'Có lỗi xảy ra. Vui lòng thử lại.');
         } finally {
             setLoading(false);
         }
@@ -52,19 +57,20 @@ const Login = () => {
         <Layout>
             <div style={{
                 maxWidth: '550px',
-                margin: '50px auto',
+                margin: '60px auto',
                 padding: '20px'
             }}>
-                <Card>
-                    <Title level={3} style={{ textAlign: 'center', marginBottom: '24px' }}>
+                <Card bordered>
+                    <Title level={3} style={{ textAlign: 'center', marginBottom: 24 }}>
                         Đăng Nhập
                     </Title>
 
                     <Form
                         form={form}
                         name="login"
-                        onFinish={handleSubmit}
                         layout="vertical"
+                        onFinish={handleSubmit}
+                        autoComplete="off"
                     >
                         <Form.Item
                             name="email"
@@ -75,40 +81,35 @@ const Login = () => {
                             ]}
                         >
                             <Input
-                                style={{ height: '45px' }}
                                 prefix={<UserOutlined />}
-                                placeholder="Nhập email"
+                                placeholder="example@email.com"
+                                style={{ height: 45 }}
                             />
                         </Form.Item>
 
                         <Form.Item
                             name="password"
                             label="Mật khẩu"
-                            rules={[
-                                { required: true, message: 'Vui lòng nhập mật khẩu!' }
-                            ]}
+                            rules={[{ required: true, message: 'Vui lòng nhập mật khẩu!' }]}
                         >
                             <Input.Password
-                                style={{ height: '45px' }}
                                 prefix={<LockOutlined />}
-                                placeholder="Nhập mật khẩu"
-                                visibilityToggle
+                                placeholder="••••••••"
+                                style={{ height: 45 }}
                             />
                         </Form.Item>
 
                         <Form.Item>
                             <Button
+                                type="primary"
                                 htmlType="submit"
                                 loading={loading}
                                 block
                                 style={{
-                                    width: '100%',
-                                    height: '45px',
+                                    height: 45,
                                     backgroundColor: '#0256B4',
-                                    color: '#fff',
-                                    border: '1px solid #0256B4',
-                                    borderRadius: '5px',
-                                    marginTop: '10px'
+                                    borderColor: '#0256B4',
+                                    borderRadius: 5
                                 }}
                             >
                                 {loading ? 'Đang đăng nhập...' : 'Đăng Nhập'}
@@ -116,7 +117,7 @@ const Login = () => {
                         </Form.Item>
                     </Form>
 
-                    <div style={{ textAlign: 'center' }}>
+                    <div style={{ textAlign: 'center', marginTop: 12 }}>
                         Chưa có tài khoản? <Link to="/register">Đăng ký ngay</Link>
                     </div>
                 </Card>
