@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import Layout from '../../components/Layout/Layout';
@@ -28,10 +28,6 @@ const Register = () => {
     const navigate = useNavigate();
     const [form] = Form.useForm();
 
-    useEffect(() => {
-        form.getFieldInstance('name')?.focus();
-    }, [form]);
-
     const handleSubmit = async (values) => {
         setLoading(true);
         try {
@@ -53,9 +49,19 @@ const Register = () => {
         }
     };
 
+    // Validation rule for confirming password
+    const validateConfirmPassword = ({ getFieldValue }) => ({
+        validator(_, value) {
+            if (!value || getFieldValue('password') === value) {
+                return Promise.resolve();
+            }
+            return Promise.reject(new Error('Mật khẩu xác nhận không khớp!'));
+        },
+    });
+
     return (
         <Layout>
-            <div style={{ maxWidth: '550px', margin: '50px auto', padding: '10px' }}>
+            <div style={{ maxWidth: 550, margin: '50px auto', padding: 10 }}>
                 <Card>
                     <Title level={3} style={{ textAlign: 'center', marginBottom: 24 }}>
                         Đăng Ký Tài Khoản
@@ -79,6 +85,8 @@ const Register = () => {
                             <Input
                                 prefix={<UserOutlined />}
                                 placeholder="Nhập họ và tên"
+                                autoFocus
+                                allowClear
                             />
                         </Form.Item>
 
@@ -93,6 +101,7 @@ const Register = () => {
                             <Input
                                 prefix={<MailOutlined />}
                                 placeholder="Nhập email"
+                                allowClear
                             />
                         </Form.Item>
 
@@ -103,10 +112,29 @@ const Register = () => {
                                 { required: true, message: 'Vui lòng nhập mật khẩu!' },
                                 { min: 6, message: 'Mật khẩu phải có ít nhất 6 ký tự!' }
                             ]}
+                            hasFeedback
                         >
                             <Input.Password
                                 prefix={<LockOutlined />}
                                 placeholder="Nhập mật khẩu"
+                                allowClear
+                            />
+                        </Form.Item>
+
+                        <Form.Item
+                            name="confirm"
+                            label="Xác nhận mật khẩu"
+                            dependencies={['password']}
+                            hasFeedback
+                            rules={[
+                                { required: true, message: 'Vui lòng xác nhận mật khẩu!' },
+                                validateConfirmPassword,
+                            ]}
+                        >
+                            <Input.Password
+                                prefix={<LockOutlined />}
+                                placeholder="Nhập lại mật khẩu"
+                                allowClear
                             />
                         </Form.Item>
 
@@ -121,6 +149,7 @@ const Register = () => {
                             <Input
                                 prefix={<PhoneOutlined />}
                                 placeholder="Nhập số điện thoại"
+                                allowClear
                             />
                         </Form.Item>
 
@@ -131,7 +160,7 @@ const Register = () => {
                                 { required: true, message: 'Vui lòng chọn giới tính!' }
                             ]}
                         >
-                            <Select placeholder="Chọn giới tính">
+                            <Select placeholder="Chọn giới tính" allowClear>
                                 <Select.Option value="Nam">Nam</Select.Option>
                                 <Select.Option value="Nữ">Nữ</Select.Option>
                                 <Select.Option value="Khác">Khác</Select.Option>
@@ -148,6 +177,7 @@ const Register = () => {
                             <Input.TextArea
                                 placeholder="Nhập địa chỉ"
                                 rows={3}
+                                allowClear
                             />
                         </Form.Item>
 
@@ -157,31 +187,39 @@ const Register = () => {
                             rules={[
                                 {
                                     pattern: /^(https?:\/\/)?(www\.)?github\.com\/[a-zA-Z0-9_-]+(\/[a-zA-Z0-9_-]+)*\/?$/,
-                                    message: 'Link GitHub không hợp lệ!'
+                                    message: 'Link GitHub không hợp lệ!',
                                 }
                             ]}
                         >
                             <Input
                                 prefix={<GithubOutlined />}
                                 placeholder="https://github.com/yourusername"
+                                allowClear
                             />
                         </Form.Item>
 
-                        <Form.Item>
-                            <Button
-                                type="primary"
-                                htmlType="submit"
-                                loading={loading}
-                                block
-                                style={{
-                                    height: 45,
-                                    backgroundColor: '#0256B4',
-                                    borderColor: '#0256B4',
-                                    borderRadius: 5
-                                }}
-                            >
-                                {loading ? 'Đang đăng ký...' : 'Đăng Ký'}
-                            </Button>
+                        <Form.Item shouldUpdate>
+                            {() => (
+                                <Button
+                                    type="primary"
+                                    htmlType="submit"
+                                    loading={loading}
+                                    block
+                                    disabled={
+                                        loading ||
+                                        !form.isFieldsTouched(true) ||
+                                        !!form.getFieldsError().filter(({ errors }) => errors.length).length
+                                    }
+                                    style={{
+                                        height: 45,
+                                        backgroundColor: '#0256B4',
+                                        borderColor: '#0256B4',
+                                        borderRadius: 5
+                                    }}
+                                >
+                                    {loading ? 'Đang đăng ký...' : 'Đăng Ký'}
+                                </Button>
+                            )}
                         </Form.Item>
                     </Form>
 
