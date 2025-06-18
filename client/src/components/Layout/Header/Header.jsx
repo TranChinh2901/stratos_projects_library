@@ -32,7 +32,7 @@ const Header = () => {
             token: ""
         });
         localStorage.removeItem('auth');
-        toast.success('Đăng xuất thành công!');
+        toast.success('Đăng xuất thành côngggggggd!');
         navigate('/');
     };
 
