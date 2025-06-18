@@ -1,22 +1,22 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import Layout from '../../components/Layout/Layout';
-import { 
-    Form, 
-    Input, 
-    Button, 
-    Card, 
-    Typography, 
+import {
+    Form,
+    Input,
+    Button,
+    Card,
+    Typography,
     message,
     Select
 } from 'antd';
-import { 
-    UserOutlined, 
-    LockOutlined, 
-    MailOutlined, 
+import {
+    UserOutlined,
+    LockOutlined,
+    MailOutlined,
     PhoneOutlined,
-    GithubOutlined // Import icon GitHub
+    GithubOutlined
 } from '@ant-design/icons';
 import toast from 'react-hot-toast';
 
@@ -28,21 +28,26 @@ const Register = () => {
     const navigate = useNavigate();
     const [form] = Form.useForm();
 
+    useEffect(() => {
+        form.getFieldInstance('name')?.focus();
+    }, [form]);
+
     const handleSubmit = async (values) => {
         setLoading(true);
-
         try {
             const response = await axios.post(`${API_URL}/api/v1/auth/register`, values);
-            
             if (response.data.success) {
                 toast.success('Đăng ký thành công!');
+                message.success('Bạn sẽ được chuyển sang trang đăng nhập...');
                 navigate('/login');
+            } else {
+                toast.error('Đăng ký thất bại!');
+                message.error(response.data.message || 'Vui lòng kiểm tra lại thông tin.');
             }
         } catch (error) {
-            // Sử dụng message.error và toast.error để hiển thị thông báo lỗi
             const errorMessage = error.response?.data?.message || 'Đăng ký thất bại';
-            message.error(errorMessage);
             toast.error(errorMessage);
+            message.error(errorMessage);
         } finally {
             setLoading(false);
         }
@@ -50,25 +55,22 @@ const Register = () => {
 
     return (
         <Layout>
-            <div style={{ 
-                maxWidth: '550px', 
-                margin: ' auto', 
-                padding: '10px' 
-            }}>
+            <div style={{ maxWidth: '550px', margin: '50px auto', padding: '10px' }}>
                 <Card>
-                    <Title level={3} style={{ textAlign: 'center', marginBottom: '24px' }}>
+                    <Title level={3} style={{ textAlign: 'center', marginBottom: 24 }}>
                         Đăng Ký Tài Khoản
                     </Title>
-                    
+
                     <Form
                         form={form}
                         name="register"
                         onFinish={handleSubmit}
                         layout="vertical"
+                        autoComplete="off"
                     >
                         <Form.Item
                             name="name"
-                            label="Họ và tên" // Đã đổi sang tiếng Việt cho nhất quán
+                            label="Họ và tên"
                             rules={[
                                 { required: true, message: 'Vui lòng nhập họ và tên!' },
                                 { min: 2, message: 'Họ và tên phải có ít nhất 2 ký tự!' }
@@ -150,34 +152,40 @@ const Register = () => {
                         </Form.Item>
 
                         <Form.Item
-                            name="github" 
+                            name="github"
                             label="Link GitHub (tùy chọn)"
                             rules={[
-                                { 
-                                    pattern: /^(https?:\/\/)?(www\.)?github\.com\/[a-zA-Z0-9_-]+(\/[a-zA-Z0-9_-]+)*\/?$/, 
-                                    message: 'Link GitHub không hợp lệ!' 
+                                {
+                                    pattern: /^(https?:\/\/)?(www\.)?github\.com\/[a-zA-Z0-9_-]+(\/[a-zA-Z0-9_-]+)*\/?$/,
+                                    message: 'Link GitHub không hợp lệ!'
                                 }
                             ]}
                         >
                             <Input
-                                prefix={<GithubOutlined />} 
-                                placeholder="Nhập link GitHub của bạn (ví dụ: https://github.com/yourusername)"
+                                prefix={<GithubOutlined />}
+                                placeholder="https://github.com/yourusername"
                             />
                         </Form.Item>
-                      
+
                         <Form.Item>
                             <Button
                                 type="primary"
                                 htmlType="submit"
                                 loading={loading}
                                 block
+                                style={{
+                                    height: 45,
+                                    backgroundColor: '#0256B4',
+                                    borderColor: '#0256B4',
+                                    borderRadius: 5
+                                }}
                             >
                                 {loading ? 'Đang đăng ký...' : 'Đăng Ký'}
                             </Button>
                         </Form.Item>
                     </Form>
 
-                    <div style={{ textAlign: 'center' }}>
+                    <div style={{ textAlign: 'center', marginTop: 10 }}>
                         Đã có tài khoản? <Link to="/login">Đăng nhập ngay</Link>
                     </div>
                 </Card>
