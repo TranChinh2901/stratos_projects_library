@@ -1,20 +1,19 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from './../../context/AuthContext';
 import axios from 'axios';
 import Layout from '../../components/Layout/Layout';
-import { 
-    Form, 
-    Input, 
-    Button, 
-    Card, 
-    Typography, 
-    message
+import {
+    Form,
+    Input,
+    Button,
+    Card,
+    Typography
 } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import toast from 'react-hot-toast';
-const API_URL = import.meta.env.VITE_API;
 
+const API_URL = import.meta.env.VITE_API;
 const { Title } = Typography;
 
 const Login = () => {
@@ -23,33 +22,27 @@ const Login = () => {
     const navigate = useNavigate();
     const [form] = Form.useForm();
 
+    useEffect(() => {
+        form.getFieldInstance('email')?.focus();
+    }, []);
+
     const handleSubmit = async (values) => {
         setLoading(true);
-
         try {
-            // const response = await axios.post('http://localhost:3000/api/v1/auth/login', values);
             const response = await axios.post(`${API_URL}/api/v1/auth/login`, values);
-            
-            if (response.data.success) {
-                setAuth({
-                    user: response.data.user_success,
-                    token: response.data.token
-                });
-                
-                // message.success('Đăng nhập thành công!');
+            const { success, token, user_success } = response.data;
+
+            if (success && user_success) {
+                setAuth({ user: user_success, token });
                 toast.success('Đăng nhập thành công!');
-                
-                // Chuyển hướng dựa trên role
-                if (response.data.user_success.role === 1) {
-                    navigate('/');
-                    // navigate('/admin/dashboard');
-                } else {
-                    navigate('/');
-                }
+
+                // Chuyển hướng dựa vào role
+                navigate(user_success.role === 1 ? '/' : '/');
+            } else {
+                toast.error('Đăng nhập thất bại!');
             }
         } catch (error) {
-            message.error(error.response?.data?.message || 'Đăng nhập thất bại');
-            toast.error('Đăng nhập thất bại');
+            toast.error(error?.response?.data?.message || 'Đăng nhập thất bại');
         } finally {
             setLoading(false);
         }
@@ -57,16 +50,16 @@ const Login = () => {
 
     return (
         <Layout>
-            <div style={{ 
-                maxWidth: '550px', 
-                margin: '50px auto', 
-                padding: '20px' 
+            <div style={{
+                maxWidth: '550px',
+                margin: '50px auto',
+                padding: '20px'
             }}>
                 <Card>
                     <Title level={3} style={{ textAlign: 'center', marginBottom: '24px' }}>
                         Đăng Nhập
                     </Title>
-                    
+
                     <Form
                         form={form}
                         name="login"
@@ -82,7 +75,7 @@ const Login = () => {
                             ]}
                         >
                             <Input
-                            style={{height: '45px'}}
+                                style={{ height: '45px' }}
                                 prefix={<UserOutlined />}
                                 placeholder="Nhập email"
                             />
@@ -96,18 +89,27 @@ const Login = () => {
                             ]}
                         >
                             <Input.Password
-                                style={{height: '45px'}}
+                                style={{ height: '45px' }}
                                 prefix={<LockOutlined />}
                                 placeholder="Nhập mật khẩu"
+                                visibilityToggle
                             />
                         </Form.Item>
 
                         <Form.Item>
                             <Button
-                                style={{ width: '100%', height: '45px', backgroundColor: '#0256B4', color: '#fff', border: '1px solid #0256B4', borderRadius: '5px', marginTop: '10px' }}
                                 htmlType="submit"
                                 loading={loading}
                                 block
+                                style={{
+                                    width: '100%',
+                                    height: '45px',
+                                    backgroundColor: '#0256B4',
+                                    color: '#fff',
+                                    border: '1px solid #0256B4',
+                                    borderRadius: '5px',
+                                    marginTop: '10px'
+                                }}
                             >
                                 {loading ? 'Đang đăng nhập...' : 'Đăng Nhập'}
                             </Button>
