@@ -1,0 +1,103 @@
+.profileContainer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 900px;
+  margin: 30px auto;
+  background-color: #fff;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(189, 189, 189, 0.08);
+  padding: 20px;
+}
+.rightProfile {
+  flex: 1;
+  padding: 20px;
+}
+.profileDetails h3 {
+  font-size: 1.8em;
+  color: #333;
+  margin-bottom: 25px;
+  text-align: center;
+}
+.formGroup {
+  margin-bottom: 20px;
+  flex: 1;
+  min-width: 250px;
+}
+.formGroup label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #555;
+  font-size: 0.95em;
+}
+.formControl {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1em;
+  color: #333;
+  box-sizing: border-box;
+}
+.flexFormOne,
+.flexFormTwo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.profileDetails > .formGroup {
+    margin-bottom: 20px;
+}
+.buttonContainer{
+    width: 100%;
+    text-align: center;
+}
+.updateButton {
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #0366D6;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 20px;
+}
+.updateButton:active {
+  transform: translateY(0);
+}
+@media (max-width: 768px) {
+  .profileContainer {
+    margin: 20px;
+    padding: 15px;
+  }
+  .profileDetails h3 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+  .flexFormOne,
+  .flexFormTwo {
+    flex-direction: column;
+    gap: 0;
+  }
+  .formGroup {
+    min-width: unset;
+    width: 100%;
+  }
+  .updateButton {
+    padding: 12px 15px;
+    font-size: 1em;
+  }
+}
+@media (max-width: 480px) {
+  .profileContainer {
+    margin: 15px;
+    padding: 10px;
+  }
+}

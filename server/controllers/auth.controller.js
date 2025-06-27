@@ -167,12 +167,6 @@ const updateUserController = async (req, res) => {
     try {
         const id = req.params.id;
         const { name, email, phone, address, gender} = req.body;
-        if (!name || !email || !phone || !address || !gender) {
-            return res.status(400).json({
-                success: false,
-                message: 'Bắt buộc phải nhập đầy đủ thông tin'
-            })
-        }
         const user = await userModel.findByIdAndUpdate(id, {
             name,
             email,

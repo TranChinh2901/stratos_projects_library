@@ -46,7 +46,8 @@ const App = () => {
         <Route path="/languages/by-category/:slug" element={<Languages />} />
         <Route path="/language_detail/:slug" element={<DetailLanguages />} />
         <Route path="/view-members" element={<ViewTeam />} />
-        <Route path="/profile/edit" element={<EditProfile/>}/>
+        <Route path="/profile/edit/:id" element={<EditProfile/>}/>
+        
         <Route
           path="/login"
           element={

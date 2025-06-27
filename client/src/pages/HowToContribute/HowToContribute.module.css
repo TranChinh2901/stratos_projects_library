@@ -1,19 +1,16 @@
 
-
 .containerContribute {
     width: 100%;
     margin-top: 160px;
     padding: 20px;
     box-sizing: border-box;
 }
-
 .containerContribute h2 {
     font-weight: 600; 
     color: #333;
     font-size: 1.6rem;
     margin-bottom: 40px;
 }
-
 .flexContribute {
     display: flex;
     justify-content: center;
@@ -23,7 +20,6 @@
     max-width: 1120px; 
     margin: 0 auto;
 }
-
 .itemsContribute {
     cursor: pointer;
     flex: 1;

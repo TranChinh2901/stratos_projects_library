@@ -3,7 +3,6 @@ import { Result, Button } from 'antd';
 import { useNavigate } from 'react-router-dom';
 const NotFound = () => {
     const navigate = useNavigate();
-
     return (
         <div>
             <Result
@@ -19,5 +18,4 @@ const NotFound = () => {
         </div>
     );
 };
-
 export default NotFound;

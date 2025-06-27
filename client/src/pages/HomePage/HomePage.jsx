@@ -10,11 +10,11 @@ import PopularAlgo from '../PopularAlgo/PopularAlgo';
 import HowToContribute from '../HowToContribute/HowToContribute';
 import JoinOurCommunity from '../JoinOurCommunity/JoinOurCommunity';
 import OurTeam from '../OurTeam/OurTeam';
+import Chatbot from '../../utils/Chatbot_fe';
 
 const HomePage = () => {
   useEffect(() => {
     const isMobile = window.innerWidth <= 768;
-
     AOS.init({
       duration: isMobile ? 900 : 1000,
       once: true,
@@ -32,7 +32,6 @@ const HomePage = () => {
       });
     };
   }, []);
-
   const handleClick = () => {
     window.scrollTo({
       top: document.getElementById('languages-section').offsetTop,
@@ -81,6 +80,9 @@ const HomePage = () => {
         <section id="team-section">
           <OurTeam />
         </section>
+        <div>
+          <Chatbot />
+        </div>
       </div>
     </Layout>
   )

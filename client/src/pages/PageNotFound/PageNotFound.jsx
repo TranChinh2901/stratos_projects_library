@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import Layout from '../../components/Layout/Layout';
 const NotFoundPage = () => {
     const navigate = useNavigate();
-
     return (
         <Layout title="Stratos - Page Not Found" description="The page you are looking for does not exist.">
             <Result
@@ -20,5 +19,4 @@ const NotFoundPage = () => {
         </Layout>
     );
 };
-
 export default NotFoundPage;

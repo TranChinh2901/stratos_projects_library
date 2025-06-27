@@ -55,7 +55,9 @@
      color: white;
      text-decoration: none;
 }
-
+button{
+    cursor: pointer;
+}
 @media (max-width: 768px) {
    .containerPopularAlgo{
     margin-top: 80px;

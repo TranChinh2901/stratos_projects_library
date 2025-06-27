@@ -6,14 +6,12 @@
     padding: 0 15px;
     box-sizing: border-box;
 }
-
 .inContainerViewTeam {
     gap: 20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
-
 .leftViewTeam {
     flex: 1;
     position: sticky;
@@ -23,7 +21,6 @@
     padding: 10px;
     box-sizing: border-box;
 }
-
 .leftViewTeam h3 {
     margin-bottom: 15px;
 }
@@ -38,14 +35,12 @@
     align-items: center;
     gap: 5px;
 }
-
 .rightViewTeam {
     flex: 3;
     min-width: 300px;
     padding: 10px;
     box-sizing: border-box;
 }
-
 .rightViewTeam h3 {
     margin-bottom: 20px;
 }

@@ -3,20 +3,17 @@
     margin: 40px auto;
     box-sizing: border-box;
 }
-
 .inDetailController {
     display: flex;
     gap: 30px;
     align-items: flex-start;
 }
-
 .inDetailLeft {
     flex: 0 0 200px;
     position: sticky;
     top: 90px;
     padding-right: 20px;
 }
-
 .inDetailLeft button {
     display: flex;
     align-items: center;
@@ -32,11 +29,9 @@
     width: 100%;
     justify-content: flex-start;
 }
-
 .inDetailLeft button:hover {
     background-color: #f0f0f0;
 }
-
 .inDetailLeft .title {
     margin-top: 20px;
     font-size: 1.1rem;
@@ -44,7 +39,6 @@
     padding-bottom: 15px;
     border-bottom: 1px solid #eee;
 }
-
 .inDetailRight {
     flex: 1;
     width: 100%;
@@ -52,21 +46,18 @@
     overflow: hidden;
     object-fit: cover;
 }
-
 .inDetailRight .title {
     font-size: 1.8rem;
     margin-bottom: 10px;
     color: #222;
     text-align: left;
 }
-
 .inDetailRight h3 {
     font-size: 1.3rem;
     color: #444;
     margin-bottom: 25px;
     text-align: left;
 }
-
 .imageDetailLanguages {
     width: 100%;
     height: auto;
@@ -75,7 +66,6 @@
     margin-bottom: 30px;
     object-fit: cover;
 }
-
 .descriptionContent {
     font-size: 1rem;
     line-height: 1.7;
@@ -83,7 +73,6 @@
     padding-top: 20px;
     border-top: 1px solid #eee;
 }
-
 .descriptionContent p {
     margin-bottom: 1em;
 }

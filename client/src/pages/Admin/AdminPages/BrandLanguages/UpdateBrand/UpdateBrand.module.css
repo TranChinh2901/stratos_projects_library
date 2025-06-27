@@ -124,7 +124,7 @@
 
 .submitButton {
     padding: 12px 24px; /* Tăng padding */
-    background-color: #5cb85c;
+    background-color: #1890ff;
     color: white;
     border: none;
     border-radius: 3px;
@@ -135,7 +135,7 @@
 }
 
 .submitButton:hover {
-    background-color: #4cae4c;
+    background-color: #1890ff;
 }
 
 .loadingContainer {

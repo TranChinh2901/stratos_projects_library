@@ -19,11 +19,9 @@ const OurTeam = () => {
         };
         fetchUsers();
     }, []);
-
     const getRandomAvatar = (userId, userName) => {
         return `https://ui-avatars.com/api/?name=${encodeURIComponent(userName)}&background=random&color=fff&size=200`;
     };
-
     const checkRole = (role) => {
         if(role === 0) {
             return 'User';
@@ -46,7 +44,6 @@ const OurTeam = () => {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '22px', marginTop: '35px' }}>
             {users.map((user) => (
                 <div key={user._id} style={{ 
-                    // border: '1px solid rgb(220, 234, 248)', 
                     borderRadius: '10px', 
                     padding: '20px', 
                     textAlign: 'center',
@@ -67,8 +64,6 @@ const OurTeam = () => {
                     />
                     <h3 style={{fontWeight: 500, marginTop:'15px'}}>{user.name}</h3>
                     <a  className={styles.linkGithub} href={user.github}><FaGithub className={styles.iconGithub}/></a>
-                    {/* <p>{user.email}</p> */}
-                    {/* <p className={styles.checkrole}>{checkRole(user.role)}</p> */}
                 </div>
             ))}
         </div>

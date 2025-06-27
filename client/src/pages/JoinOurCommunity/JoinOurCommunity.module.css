@@ -12,7 +12,6 @@
     margin-bottom: 40px;
     color: #333;
 }
-
 .flexCommunity {
     display: flex;
     align-items: center;
@@ -22,20 +21,17 @@
     gap: 40px;
     flex-wrap: wrap;
 }
-
 .leftCommunity {
     flex: 1;
     min-width: 300px;
     padding-right: 20px;
 }
-
 .leftCommunity p {
     font-size: 1.1rem;
     line-height: 1.6;
     margin-bottom: 20px;
     color: #555;
 }
-
 .joinButton {
     width: 100%;
     display: inline-block;
@@ -49,21 +45,17 @@
     gap: 10px;
     transition: background-color 0.3s ease;
 }
-
 .rightCommunity {
     flex: 1;
     min-width: 300px;
     text-align: center;
 }
-
 .rightCommunity img {
     max-width: 100%;
     height: auto;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
-/* Responsive design */
 @media (max-width: 768px) {
     .JoinOurCommunityContainer {
     margin-top: 10px;
@@ -88,5 +80,4 @@
     font-size: 1rem;
  
 }
-
 }

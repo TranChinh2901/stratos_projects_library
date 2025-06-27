@@ -230,14 +230,31 @@ const AdminLayout = () => {
                 }}
               />
             </Col>
-            <Col md={4}>
-              <Dropdown overlay={dropdownMenu} placement="bottomRight" arrow>
-                <div style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
-                  <Avatar size="default" icon={<TeamOutlined />} />
-                  <span style={{ marginLeft: 8 }}>{auth.user ? `${auth.user.name}` : "Tài khoản"}<MdOutlineArrowDropDown style={{ fontSize: '25px' }} /> </span>
-                </div>
-              </Dropdown>
-            </Col>
+          <Col md={4}>
+  <Dropdown overlay={dropdownMenu} placement="bottomRight" arrow>
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: 8,
+        cursor: 'pointer',
+        padding: '6px 10px',
+        borderRadius: 6,
+        transition: 'background 0.3s',
+        // backgroundColor: '#f5f5f5',
+        fontWeight: 500,
+      }}
+     
+    >
+      <Avatar size="default" icon={<TeamOutlined />} />
+      <span style={{ display: 'flex', alignItems: 'center' }}>
+        {auth.user ? auth.user.name : "Tài khoản"}
+        <MdOutlineArrowDropDown style={{ fontSize: 20, marginLeft: 4 }} />
+      </span>
+    </div>
+  </Dropdown>
+</Col>
+
           </Row>
         </Header>
         <Content

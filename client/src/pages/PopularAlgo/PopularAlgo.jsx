@@ -6,7 +6,9 @@ import { PiGraphLight } from "react-icons/pi";
 import { PiTreeEvergreenLight } from "react-icons/pi";
 import { Link } from 'react-router-dom';
 const PopularAlgo = () => {
-   
+   const handleToGit = () => {
+    window.open('https://ducchinhpro123.github.io/dsa/', '_blank');
+   }
   return (
     <div className={styles.containerPopularAlgo}>
       <div data-aos="fade-right">
@@ -27,8 +29,8 @@ const PopularAlgo = () => {
                         <li>Radix Sort</li>
                         <li>Shell Sort</li>
                         <li>
-                            <button className={styles.buttonPopular} >
-                                    <Link className={styles.linkPopular} to={'https://ducchinhpro123.github.io/dsa/'}>Learn more</Link>
+                            <button className={styles.buttonPopular} onClick={handleToGit}>
+                                    <Link className={styles.linkPopular} >Learn more</Link>
                                  </button>
                         </li>
                     </ul>
@@ -46,8 +48,8 @@ const PopularAlgo = () => {
                         <li>Ternary Search</li>
                         <li>Shell Search</li>
                         <li>
-                            <button className={styles.buttonPopular} >
-                                    <Link className={styles.linkPopular} to={'https://ducchinhpro123.github.io/dsa/'}>Learn more</Link>
+                            <button className={styles.buttonPopular} onClick={handleToGit}>
+                                    <Link className={styles.linkPopular} >Learn more</Link>
                                  </button>
                         </li>
                     </ul>
@@ -65,8 +67,8 @@ const PopularAlgo = () => {
                         <li>Prim's Algorithm</li>
                         <li>A* Pathfinding</li>
                         <li>
-                            <button className={styles.buttonPopular} >
-                                    <Link className={styles.linkPopular} to={'https://ducchinhpro123.github.io/dsa/'}>Learn more</Link>
+                            <button className={styles.buttonPopular} onClick={handleToGit}>
+                                    <Link className={styles.linkPopular} >Learn more</Link>
                                  </button>
                         </li>
                     </ul>
@@ -84,8 +86,8 @@ const PopularAlgo = () => {
                         <li>Heaps</li>
                         <li>Tries</li>
                         <li>
-                            <button className={styles.buttonPopular} >
-                                    <Link className={styles.linkPopular} to={'https://ducchinhpro123.github.io/dsa/'}>Learn more</Link>
+                            <button className={styles.buttonPopular} onClick={handleToGit}>
+                                    <Link className={styles.linkPopular} >Learn more</Link>
                                  </button>
                         </li>
                     </ul>

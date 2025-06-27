@@ -7,7 +7,6 @@ const HowToContribute = () => {
   return (
     <div className={styles.containerContribute}>
                 <h2>How to Contribute</h2>
-           
             <div className={styles.flexContribute} >
                 <div data-aos="zoom-out" className={styles.itemsContribute}>
                     <GoRepoForked className={styles.iconContribute}/>
@@ -33,5 +32,4 @@ const HowToContribute = () => {
     </div>
   )
 }
-
 export default HowToContribute

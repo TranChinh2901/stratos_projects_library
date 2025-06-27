@@ -27,9 +27,9 @@ const navigate = useNavigate();
             <div className={styles.profileDetails}>
                 <div className={styles.profileFlex}>
                     <h3>Profile Details</h3>
-                     <div style={{ fontSize: '22px', cursor: 'pointer' }} onClick={() => navigate("/profile/edit")}>
-                                <LuPenLine />
-                            </div>
+                     <div style={{ fontSize: '22px', cursor: 'pointer' }} onClick={() => navigate(`/profile/edit/${auth?.user?._id}`)}>
+                          <LuPenLine />
+                     </div>
                 </div>
                 <p><strong>Email:</strong> {auth?.user?.email}</p>
                 <p><strong>Phone:</strong> {auth?.user?.phone || 'N/A'}</p>
@@ -40,5 +40,4 @@ const navigate = useNavigate();
     </Layout>
   )
 }
-
 export default Profile

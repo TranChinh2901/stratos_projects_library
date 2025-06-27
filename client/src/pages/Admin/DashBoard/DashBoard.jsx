@@ -22,13 +22,11 @@ const getNumericalValue = (response, defaultKey = 'data') => {
   if (!response || !response.data) {
     return 0;
   }
-
   const responseData = response.data;
 
   if (typeof responseData === 'number') {
     return responseData;
   }
-
   if (typeof responseData === 'object') {
     if (typeof responseData.data === 'number') {
       return responseData.data;
@@ -46,11 +44,8 @@ const getNumericalValue = (response, defaultKey = 'data') => {
       return responseData.count.count || 0;
     }
   }
-
   return 0;
 };
-
-
 const Dashboard = () => {
   const [stats, setStats] = useState({
     users: 0,
@@ -65,17 +60,14 @@ const Dashboard = () => {
   useEffect(() => {
     fetchDashboardData();
   }, []);
-
   const fetchDashboardData = async () => {
     try {
       setLoading(true);
-
       const usersPromise = axios.get(`${API_URL}/api/v1/auth/count-users`);
       const languagesPromise = axios.get(`${API_URL}/api/v1/language/count-languages`);
       const categoriesPromise = axios.get(`${API_URL}/api/v1/category/count-categoryLanguages`);
       const blogsPromise = axios.get(`${API_URL}/api/v1/blog/count-blogLanguages`);
       const brandsPromise = axios.get(`${API_URL}/api/v1/brand/count-brandLanguages`);
-
       const [usersRes, languagesRes, categoriesRes, blogsRes, brandsRes] = await Promise.all([
         usersPromise,
         languagesPromise,
@@ -83,7 +75,6 @@ const Dashboard = () => {
         blogsPromise,
         brandsPromise
       ]);
-
       const userCount = getNumericalValue(usersRes, 'count');
       const languageCount = getNumericalValue(languagesRes, 'data');
       const categoryCount = getNumericalValue(categoriesRes, 'data');
@@ -97,7 +88,7 @@ const Dashboard = () => {
         blogs: blogCount,
         brands: brandCount
       });
-
+      
       const usersResponse = await axios.get(`${API_URL}/api/v1/auth/users`);
       setRecentUsers(
         usersResponse.data.users
