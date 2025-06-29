@@ -13,14 +13,14 @@
     text-align: center;
     margin-bottom: 30px;
     color: #333;
-    font-size: 2.1em; /* Tăng cỡ chữ */
+    font-size: 2.1em;
     font-weight: bold;
 }
 
 .updateBrandForm {
     display: flex;
     flex-direction: column;
-    gap: 22px; /* Tăng khoảng cách một chút */
+    gap: 22px;
     padding: 0 20px;
 }
 
@@ -31,19 +31,19 @@
 
 .label {
     display: block;
-    margin-bottom: 9px; /* Tăng khoảng cách */
+    margin-bottom: 9px;
     font-weight: bold;
     color: #444;
-    font-size: 1em; /* Tăng cỡ chữ */
+    font-size: 1em;
 }
 
 .inputField {
     width: 100%;
-    padding: 12px 14px; /* Tăng padding */
+    padding: 12px 14px;
     border: 1px solid #ccc;
     border-radius: 3px;
     box-sizing: border-box;
-    font-size: 1.05em; /* Tăng cỡ chữ */
+    font-size: 1.05em;
     color: #333;
 }
 
@@ -57,9 +57,9 @@
 }
 
 .sectionTitle {
-    margin-top: 28px; /* Tăng khoảng cách */
-    margin-bottom: 18px; /* Tăng khoảng cách */
-    font-size: 1.3em; /* Tăng cỡ chữ */
+    margin-top: 28px;
+    margin-bottom: 18px;
+    font-size: 1.3em;
     color: #555;
     font-weight: bold;
     border-bottom: 1px solid #eee;
@@ -72,7 +72,7 @@
 }
 
 .formGroupImage {
-    padding: 22px; /* Tăng padding */
+    padding: 22px;
     background-color: #fefefe;
     border: 1px solid #eee;
     border-radius: 4px;
@@ -81,15 +81,15 @@
 
 .fileInput {
     display: block;
-    margin: 18px 0 22px 0; /* Tăng khoảng cách */
+    margin: 18px 0 22px 0;
     width: fit-content;
-    padding: 10px 15px; /* Tăng padding */
+    padding: 10px 15px;
     background-color: #f0f0f0;
     color: #666;
     border: 1px solid #ddd;
     border-radius: 3px;
     cursor: pointer;
-    font-size: 0.95em; /* Tăng cỡ chữ */
+    font-size: 0.95em;
 }
 
 .fileInput:hover {
@@ -97,41 +97,41 @@
 }
 
 .imagePreviewContainer {
-    margin-top: 22px; /* Tăng khoảng cách */
+    margin-top: 22px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    min-height: 150px; /* Tăng chiều cao tối thiểu */
+    min-height: 150px;
     border: 1px dashed #ccc;
     border-radius: 3px;
     background-color: #fafafa;
     overflow: hidden;
-    padding-left: 12px; /* Tăng padding */
+    padding-left: 12px;
 }
 
 .imagePreview {
-    max-width: 85%; /* Tăng kích thước tối đa */
-    max-height: 130px; /* Tăng kích thước tối đa */
+    max-width: 85%;
+    max-height: 130px;
     object-fit: contain;
     border-radius: 3px;
 }
 
 .buttonContainer {
-    margin-top: 28px; /* Tăng khoảng cách */
+    margin-top: 28px;
     text-align: right;
     padding-right: 20px;
 }
 
 .submitButton {
-    padding: 12px 24px; /* Tăng padding */
+    padding: 12px 24px;
     background-color: #1890ff;
     color: white;
     border: none;
     border-radius: 3px;
     cursor: pointer;
-    font-size: 1.05em; /* Tăng cỡ chữ */
+    font-size: 1.05em;
     font-weight: bold;
-    min-width: 140px; /* Tăng chiều rộng tối thiểu */
+    min-width: 140px;
 }
 
 .submitButton:hover {
@@ -142,8 +142,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 160px; /* Tăng chiều cao */
-    font-size: 1.2em; /* Tăng cỡ chữ */
+    height: 160px;
+    font-size: 1.2em;
     color: #666;
 }
 
@@ -187,3 +187,6 @@
         padding: 18px;
     }
 }
+ /* .formGroupImage {
+        padding: 18px;
+    } */
